@@ -11,10 +11,6 @@ module.exports = {
 
     account_name : { type: 'string' },
 
-    email : { type: 'string' },
-
-    password : { type: 'string' },
-
     city : { type: 'string' },
 
     post_code : { type: 'integer' },

@@ -13,7 +13,6 @@ module.exports ={
    let password = params.password,
        email= params.email,
        account_name=params.account_name,
-       account_site= params.account_site,
        city= params.city,
        post_code= params.post_code,
        edh_charity_id= params.edh_charity_id,
@@ -45,7 +44,22 @@ module.exports ={
       return res.badRequest({err:'Invalid edh_charity_id'});
     }
 
-    return res.ok(params);
+    Account
+      .create({email,password})
+      .then(account =>{
+
+        if(!account) return res.negotiate({err:'Unable to create a new account'})
+
+         return School
+           .create({account_name,city,post_code,edh_charity_id,edh_status,edh_url,account:account.id});
+
+      }).then(school =>{
+
+      if(!school) return res.negotiate({err:'Unable to create a new account'});
+
+      return res.json('You have successfully created an Account');
+
+    }).catch(res.negotiate);
 
   }
 
