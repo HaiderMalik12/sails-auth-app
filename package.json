@@ -8,6 +8,7 @@
     "email-validator": "^1.0.7",
     "include-all": "~0.1.6",
     "jsonwebtoken": "^7.1.9",
+    "machinepack-passwords": "^2.3.0",
     "rc": "1.0.1",
     "sails": "~0.12.4",
     "sails-disk": "~0.10.9",

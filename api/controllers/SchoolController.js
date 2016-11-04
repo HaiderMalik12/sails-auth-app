@@ -44,8 +44,14 @@ module.exports ={
       return res.badRequest({err:'Invalid edh_charity_id'});
     }
 
+   util.getEncryptedPassword(password, function(encPassword, err){
+
+     if(!encPassword || err){
+        res.forbidden({err: 'Your password is not matched'});
+      }
+
     Account
-      .create({email,password})
+      .create({email,password:encPassword})
       .then(account =>{
 
         if(!account) return res.negotiate({err:'Unable to create a new account'})
@@ -60,7 +66,7 @@ module.exports ={
       return res.json('You have successfully created an Account');
 
     }).catch(res.negotiate);
-
+   });
   }
 
 }

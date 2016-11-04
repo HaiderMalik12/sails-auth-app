@@ -44,6 +44,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   //School
-  'POST /school':'SchoolController.create'
+  'POST /school':'SchoolController.create',
+
+  //Account
+  'POST /login' :'AuthController.login'
 
 };
