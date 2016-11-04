@@ -43,4 +43,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  //School
+  'POST /school':'SchoolController.create'
+
 };

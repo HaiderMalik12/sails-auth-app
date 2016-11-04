@@ -15,8 +15,6 @@ module.exports = {
 
     password : { type: 'string' },
 
-    account_site : { type: 'string' },
-
     city : { type: 'string' },
 
     post_code : { type: 'integer' },
