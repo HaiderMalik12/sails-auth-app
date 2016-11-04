@@ -25,7 +25,16 @@ module.exports = {
 
     edh_charity_id : { type: 'string' },
 
-    edh_url : { type: 'string' }
+    edh_url : { type: 'string' },
+
+    account: {model:'account',required:true,columnName:'account_id'},
+
+    toJSON: function () {
+      var obj = this.toObject();
+      delete obj.password;
+      delete obj.createdAt;
+      delete obj.updatedAt;
+    }
   }
 };
 
