@@ -63,7 +63,7 @@ module.exports ={
 
       if(!school) return res.negotiate({err:'Unable to create a new account'});
 
-      return res.json('You have successfully created an Account');
+      return res.json({msg:'Your account has been created successfully!'});
 
     }).catch(res.negotiate);
    });

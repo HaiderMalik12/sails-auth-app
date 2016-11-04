@@ -34,6 +34,22 @@ module.exports = function (req, res, next) {
       return res.json(401, {err: 'Invalid Token'});
     }
 
+    School.findone({id:token.school_id})
+      .then(school =>{
+
+        if(!school) return res.unauthorized({err:'No School found'});
+
+        return Account
+          .findone({id:school.account})
+
+      }).then(account => {
+
+      if(!account) return res.unauthorized({err:'Invalid Token'});
+
+      req.token = token;
+      next();
+    }).catch(res.unathorized);
+
     // Company.findOne({id: token.company, status_id: Status.LIVE}).then((comp)=>{
     //   if(!comp)
     //     throw 'No company found';
