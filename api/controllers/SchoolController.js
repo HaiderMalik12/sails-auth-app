@@ -67,6 +67,15 @@ module.exports ={
 
     }).catch(res.negotiate);
    });
+  },
+  findOne:function(req,res){
+    
+    let schoolId = req.params.id;
+
+    School
+    .findOne({id:schoolId}) 
+    .then(res.ok)
+    .catch(res.notFound);
   }
 
 }

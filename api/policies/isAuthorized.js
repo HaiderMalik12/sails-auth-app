@@ -34,13 +34,13 @@ module.exports = function (req, res, next) {
       return res.json(401, {err: 'Invalid Token'});
     }
 
-    School.findone({id:token.school_id})
+    School.findOne({id:token.school_id})
       .then(school =>{
 
         if(!school) return res.unauthorized({err:'No School found'});
 
         return Account
-          .findone({id:school.account})
+          .findOne({id:school.account})
 
       }).then(account => {
 
@@ -50,29 +50,6 @@ module.exports = function (req, res, next) {
       next();
     }).catch(res.unathorized);
 
-    // Company.findOne({id: token.company, status_id: Status.LIVE}).then((comp)=>{
-    //   if(!comp)
-    //     throw 'No company found';
-    //
-    //   return Account.findOne({id: token.id, status_id_friendly: Status.ACTIVE});
-    //
-    // }).then((acc)=>{
-    //   if(!acc)
-    //     throw 'Invalid Token';
-    //
-    //   CompanyLicence.findOne({company: token.company, active: true}, function(err, companyLicence){
-    //     if(err || !companyLicence)
-    //       return res.unauthorized('No active licence detected for your account. Please contact support for help');
-    //
-    //     if(!companyLicence.accepted && req.path != '/company/licence/accept')
-    //       return res.unauthorized({err: 'Please accept licence agreement to start using the platform', agreement: companyLicence.agreemnt});
-    //     token.licence = companyLicence.licence; // licence ID
-    //     req.token = token; // This is the decrypted token or the payload you provided
-    //     next();
-    //   });
-    // }).catch((err)=>{
-    //   res.json(401, {err: err});
-    // });
 
   });
 };

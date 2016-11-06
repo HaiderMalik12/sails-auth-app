@@ -45,8 +45,10 @@ module.exports.routes = {
 
   //School
   'POST /school':'SchoolController.create',
+  'GET /school/:id':'SchoolController.findOne',
 
   //Account
-  'POST /login' :'AuthController.login'
+  'POST /login' :'AuthController.login',
+
 
 };
