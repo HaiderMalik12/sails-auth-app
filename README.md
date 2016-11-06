@@ -4,6 +4,7 @@ Authentication with Sails js
 #Installation
 
 npm install
+
 sails lift
 
 POST http://localhost:1337/school
